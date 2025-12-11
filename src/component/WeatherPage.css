@@ -22,8 +22,8 @@ html, body, #root {
 
 /* MAIN CARD — SMALLER HEIGHT LIKE YOUR UI */
 .weather-app {
-  width: 23rem;               /* reduced width */
-  height: 33rem;              /* reduced height */
+  width: 23rem;               
+  height: 33rem;              
   border-radius: 28px;
   background: rgba(255,255,255,0.08);
   box-shadow:
@@ -97,7 +97,7 @@ html, body, #root {
 /* WEATHER IMAGE — BIGGER */
 .weather img {
   width: 1000px;
-  height: 660px;
+  height:660px;
   margin-left: 30px;
   object-fit: contain;
   filter: drop-shadow(0 12px 24px rgba(0,0,0,0.25));

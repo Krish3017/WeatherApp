@@ -5,6 +5,7 @@ import loading from '../assets/loading.gif'
 import rainy from '../assets/rainy.png'
 import snowy from '../assets/snowy.png'
 import sunny from '../assets/sunny.png'
+// import smoke from '../assets/smoke.png'
 import API_KEY from './API_KEY'
 import { useState } from 'react'
 import './WeatherPage.css'
@@ -25,6 +26,7 @@ const WeatherPage = () => {
     Snow: snowy,
     Haze: cloudy,
     Mist: cloudy,
+    Smoke : cloudy
   };
 
   const backgroundImages = {
@@ -34,6 +36,8 @@ const WeatherPage = () => {
     Snow: "linear-gradient(to right, #aff2ff, #fff)",
     Haze: "linear-gradient(to right, #57d6d4, #71eeec)",
     Mist: "linear-gradient(to right, #57d6d4, #71eeec)",
+    Smoke:"linear-gradient(to right, #5a544d, #6e6963, #4b4741)"
+
   };
 
 
