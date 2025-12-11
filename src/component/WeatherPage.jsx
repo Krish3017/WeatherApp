@@ -5,9 +5,9 @@ import loading from '../assets/loading.gif'
 import rainy from '../assets/rainy.png'
 import snowy from '../assets/snowy.png'
 import sunny from '../assets/sunny.png'
-// import smoke from '../assets/smoke.png'
 import API_KEY from './API_KEY'
 import { useState } from 'react'
+import detectLocation from './detectLocation'
 import './WeatherPage.css'
 import dayjs from 'dayjs'
 import { IconDropletHalfFilled, IconMapPinFilled, IconSearch, IconWind } from '@tabler/icons-react'
@@ -45,7 +45,7 @@ const WeatherPage = () => {
     fetchData()
   }, [])
 
-  const fetchData = async () => {
+  const fetchData = async (c = city) => {
     setLoading(true)
     const response = await axios.get(API_URL, {
       params: {
@@ -78,6 +78,17 @@ const WeatherPage = () => {
 
   // const today = new Date()
   const date = dayjs().format('DD MMM YYYY')
+
+  const handleAutoDetect = async () => {
+  try {
+    const cityName = await detectLocation();
+    setCity(cityName);
+    fetchData(cityName);
+  } catch (err) {
+    console.log("Error:", err);
+  }
+};
+
   return (
     <div className='container' style={{ background: backgroundImage || backgroundImages['Clear'] }}>
       <div className='weather-app'>
@@ -85,9 +96,10 @@ const WeatherPage = () => {
           <div className='serach-top'>
             <IconMapPinFilled />
             {city && <p>{city}</p>}
+            <button className='autoDetect' onClick={handleAutoDetect}>Use My Location</button>
           </div>
           <div className="search-bar">
-            <input className='searchInput' type="text" onChange={handleInput} placeholder='Enter Loaction' onKeyDown={(e) => e.key === "Enter" && onSearch()} />
+            <input className='searchInput' value={city} type="text" onChange={handleInput} placeholder='Enter Loaction' onKeyDown={(e) => e.key === "Enter" && onSearch()} />
             {/* <IconSearch/> */}
             <button
               onClick={onSearch}
