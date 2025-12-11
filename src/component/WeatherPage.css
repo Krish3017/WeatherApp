@@ -1,43 +1,189 @@
-/* WeatherPage.css */
-html, body, #root {
-  height: 100%;
-  margin: 0;        
+/* RESET */
+* {
+  margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
+html, body, #root {
+  height: 100%;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial;
+}
+
+/* PAGE BACKGROUND */
 .container {
-  height: 100vh;
-  width: 100%;
-  overflow: hidden;
+  min-height: 100vh;
   display: flex;
   justify-content: center;
+  align-items: flex-start;
+  padding-top: 40px;
+  background: linear-gradient(90deg, #8fddf9 0%, #9de8ff 40%, #8ad7f3 100%);
+}
+
+/* MAIN CARD — SMALLER HEIGHT LIKE YOUR UI */
+.weather-app {
+  width: 23rem;               /* reduced width */
+  height: 33rem;              /* reduced height */
+  border-radius: 28px;
+  background: rgba(255,255,255,0.08);
+  box-shadow:
+    -30px 12px 60px rgba(0,0,0,0.16),
+    0 6px 20px rgba(0,0,0,0.10);
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
   align-items: center;
 }
 
-.weather-app {
-  height: 100vh;        /* full screen height */
-  width: 35rem;         /* your box width stays same */
+/* LOCATION + SEARCH BAR */
+.serach {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.serach-top {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.search-bar {
+  width: 100%;
+  height: 42px;
+  background: rgba(255,255,255,0.2);
+  border-radius: 20px;
+  padding: 6px 12px;
+  display: flex;
+  align-items: center;
+  border: 1px solid rgba(0,0,0,0.08);
+}
+.searchInput
+{
+  flex: 1;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-size: 14px;
+  z-index: 2;
+}
+
+/* .search-bar input.search-bar {
+  flex: 1;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-size: 14px;
+  z-index: 2;
+} */
+
+.search-bar svg {
+  width: 18px;
+  height: 18px;
+}
+
+/* WEATHER BLOCK */
+.weather {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* gap: 6px; */
+}
+
+/* WEATHER IMAGE — BIGGER */
+.weather img {
+  width: 1000px;
+  height: 660px;
+  margin-left: 30px;
+  object-fit: contain;
+  filter: drop-shadow(0 12px 24px rgba(0,0,0,0.25));
+  position: fixed;
+  transform: translateY(-180px);
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* WEATHER TYPE — SMALLER */
+.weather-type p {
+  font-size: 25px;
+  font-weight: 600;
+  color: #000;
+  margin-top: 120px;
+}
+
+/* TEMPERATURE — SMALLER */
+.weather-temp p {
+  font-size: 60px;
+  font-weight: 700;
+  line-height: 0.9;
+  margin-top: 50px;
+}
+
+.weather-temp p::after {
+  content: "°";
+  font-size: 28px;
+  margin-left: 4px;
+}
+
+/* DATE — SMALLER */
+.weather-date {
+  font-size: 17px;
+  font-weight: 500;
+  color: rgba(10,10,10,0.6);
+}
+
+/* BOTTOM CARDS SMALLER */
+.weather-data {
+  width: 100%;
+  margin-top: auto;
+  display: flex;
+  gap: 14px;
+  padding-top: 12px;
+}
+
+.weather-data > div {
+  /* background: rgba(252, 251, 251, 0.9); */
+  background: rgba(255, 255, 255, 0.6);   /* 60% transparent white */
+  backdrop-filter: blur(10px);            /* gives glass effect like your UI */
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 15px;
+  padding-left: 19px;
+  height: 65px;
+  width: 110px;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
-  border-radius: 8px;
-  box-shadow: -3rem 1rem 6rem rgba(0, 0, 0, 0.1);
-  background: rgba(255, 255, 255, 0.05);
+  align-items: start;
+  gap: 4px;
+  box-shadow: 0 8px 18px rgba(0,0,0,0.07);
+}
+.weather-data
+{
+  display: flex;
+  justify-content: space-between;
 }
 
-
-.weather-app input {
-  background-color: rgba(255,255,255,0.95);
-  color: #111;
-  padding: 8px 12px;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  outline: none;
+.weather-data h4 {
+  font-size: 14px;
+  font-weight: 600;
 }
 
+.weather-data p {
+  font-size: 14px;
+  font-weight: 700;
+}
 
-.weather-app input:focus {
-  box-shadow: 0 0 0 4px rgba(81, 203, 238, 0.15);
-  border-color: #51cbee;
+.weather-data svg {
+  width: 16px;
+  height: 16px;
+}
+.loader
+{
+  height: 50px;
+  width: 50px;
+  margin-top: 150px;
 }
